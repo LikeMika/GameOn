@@ -208,6 +208,15 @@ input {
   font-size: 20px;
   height: 48px;
 }
+.error-message {
+  content: attr(msg-error);
+  font-size: 10px;
+  color: red;
+  margin-top: 5px;
+  display: none;
+}
+
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -225,6 +234,10 @@ input {
 }
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
+}
+
+.formData[data-error-visible="true"] .error-message {
+  display: block;
 }
 
 input[data-error]::after {
