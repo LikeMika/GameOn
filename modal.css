@@ -209,7 +209,6 @@ input {
   height: 48px;
 }
 .error-message {
-  content: attr(msg-error);
   font-size: 10px;
   color: red;
   margin-top: 5px;
@@ -238,6 +237,14 @@ input {
 
 .formData[data-error-visible="true"] .error-message {
   display: block;
+}
+
+.formData[data-error-visible="true"] .checkbox-label .checkbox-icon {
+  border: 2px solid red;
+}
+
+.formData[data-error-visible="true"] label[for="checkbox1"] .checkbox-icon {
+  background: red;
 }
 
 input[data-error]::after {

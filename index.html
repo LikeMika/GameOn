@@ -74,7 +74,7 @@
                   name="first"
                   minlength="2"
                 />
-                <span class="error-message">Veuillez renseignez votre prénom</span>
+                <span class="error-message">Veuillez entrer 2 caractères ou plus pour le champ du prénom</span>
               </div>
               <div
                 class="formData">
@@ -85,7 +85,7 @@
                   id="last"
                   name="last"
                 /><br>
-                <span class="error-message">Veuillez renseignez votre nom</span>
+                <span class="error-message">Veuillez entrer 2 caractères ou plus pour le champ du nom</span>
               </div>
               <div
                 class="formData">
@@ -96,7 +96,7 @@
                   id="email"
                   name="email"
                 /><br>
-                <span class="error-message">Veuillez renseignez votre email</span>
+                <span class="error-message">Veuillez entrer 2 caractères ou plus pour l'email</span>
               </div>
               <div
                 class="formData">
@@ -107,14 +107,16 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <span class="error-message">Veuillez indiquer votre date de naissance</span>
               </div>
               <div
-                class="formData">
+                class="formData"><br>
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
                 <span class="error-message">Veuillez renseignez le nombre tournois</span>
               </div>
-              <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+              <br>
+              <label>A quel tournoi souhaitez-vous participer cette année ?</label>
               <div
                 class="formData">
                 <input
@@ -183,6 +185,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <span class="error-message">Veuillez sélectionner le tournois auquel vous voulez participer</span>
               </div>
 
               <div
@@ -197,13 +200,14 @@
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <br>
+                <span class="error-message">Vous devez accepter les conditions</span>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
+                
               </div>
               <input
                 class="btn-submit"
