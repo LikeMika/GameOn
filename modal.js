@@ -21,15 +21,17 @@ const naissance = document.getElementById("birthdate");
 const tournois = document.getElementsByName("location");
 const success = document.getElementById("success");
 const formulaire = document.getElementById("form");
+const form = document.getElementById("form");
+const error = document.querySelector(".formData");
 
-
+//variable de controle
 let verifChamp = false;
 let verifQantity = false;
 let verifRadio = false;
 let verifSelect = false;
 
-const form = document.getElementById("form");
-const error = document.querySelector(".formData");
+
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
@@ -48,27 +50,22 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 closeModal.addEventListener("click", closeModaleEvent);
 buttonClose.addEventListener("click", closeModaleEvent);
 
-
-window.verifierChamp = verifierChamp;
+// Fonction de vérification des champs input text
 function verifierChamp(champ) {
-  
-  // Si le champ est vide, on lance une exception
+  // Si le champ est vide, on modifie le css pour afficher l'état d'erreur et on modifie la valeur de la variable de controle
   if (champ.value === "") {
-
     champ.parentElement.setAttribute('data-error-visible', 'true');
     verifChamp = true;
-
   }
   else {
     champ.parentElement.setAttribute('data-error-visible', 'false');
     verifChamp = false;
-    
   }
 }
 
+//Fonction de vérification de l'input qantité
 function verifierQantity(qant) {
   let numberFloat = parseFloat(quantity.value);
-  
   if (isNaN(numberFloat)) {
     qant.parentElement.setAttribute('data-error-visible', 'true');
     verifQantity = true;
@@ -79,12 +76,12 @@ function verifierQantity(qant) {
   }
 }
 
+// Fonction de vérification de l'input Radio
 function verifyRadioSelection(groupName) {
   const radioButtons = document.getElementsByName(groupName);
   let isChecked = false;
-  //console.log(isChecked);
 
-  // Check if at least one radio button is selected
+  // On verifie si au moins un bouton radio est coché
   for (const radioButton of radioButtons) {
       if (radioButton.checked) {
           isChecked = true;
@@ -92,7 +89,7 @@ function verifyRadioSelection(groupName) {
       }
   }
 
-  // If no radio button is checked, add red border
+  // Si aucun bouton n'est coché, on modifie la propriété css pour afficher l'erreur
   if (!isChecked) {
       for (const radioButton of radioButtons) {
         radioButton.parentElement.setAttribute('data-error-visible', 'true');
@@ -100,7 +97,7 @@ function verifyRadioSelection(groupName) {
       }
         
   } else {
-      // Remove red border if a radio button is selected
+      // Si tout est OK et qu'un bouton est coché, on laisse tel quel
       for (const radioButton of radioButtons) {
         radioButton.parentElement.setAttribute('data-error-visible', 'false');
         verifRadio = false;
@@ -109,32 +106,29 @@ function verifyRadioSelection(groupName) {
 
 }
 
-function verifySelect(groupName2) {
-  const selectButton = document.getElementById(groupName2);
+//Fonction de vérification de l'input Checkbox
+function verifyCheckbox(checkbox) {
+  const selectButton = document.getElementById(checkbox);
   let isChecked2 = false;
 
 
-  // Check if at least one radio button is selected
+  // On vérifie que le bouton est bien checké
       if (selectButton.checked) {
           isChecked2 = true;
       }
 
-  // If no radio button is checked, add red border
+  // Si ce n'est pas le cas, on modifie la propriété CSS pour afficher l'erreur
   if (!isChecked2) {
-
     selectButton.parentElement.setAttribute('data-error-visible', 'true');
-    
     verifSelect = true;
-        
-  } else {
-      // Remove red border if a radio button is selected
+  } 
+  else {
       selectButton.parentElement.setAttribute('data-error-visible', 'false');
       verifSelect = false;
   }
- // console.log(isChecked2);
 }
 
-
+//Fonction qui lance les différentes fonctions de vérification au click Submit du formulaire
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   verifierChamp(firstName)
@@ -143,7 +137,7 @@ form.addEventListener("submit", (event) => {
   verifierQantity(quantity)
   verifierChamp(naissance)
   verifyRadioSelection("location");
-  verifySelect("checkbox1");
+  verifyCheckbox("checkbox1");
   console.log(verifChamp,verifQantity,verifRadio, verifSelect);
   if (!verifChamp && !verifQantity && !verifRadio && !verifSelect) 
   {
