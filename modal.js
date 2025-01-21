@@ -52,8 +52,11 @@ buttonClose.addEventListener("click", closeModaleEvent);
 
 // Fonction de vérification des champs input text
 function verifierChamp(champ) {
+  const valeurChamp = champ.value.trim();
+   // Variable Regex pour valider une adresse email
+   const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   // Si le champ est vide, on modifie le css pour afficher l'état d'erreur et on modifie la valeur de la variable de controle
-  if (champ.value === "") {
+  if (champ.value === "" || valeurChamp.length < 2 || (champ.type === "email" && !regexEmail.test(valeurChamp))) {
     champ.parentElement.setAttribute('data-error-visible', 'true');
     verifChamp = true;
   }
