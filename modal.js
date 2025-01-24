@@ -1,3 +1,6 @@
+const responsiveMenu = document.getElementById("responsive-menu");
+responsiveMenu.addEventListener("click", editNav);
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -6,6 +9,7 @@ function editNav() {
     x.className = "topnav";
   }
 }
+  
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
