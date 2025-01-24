@@ -55,6 +55,7 @@ function verifierChamp(champ) {
   const valeurChamp = champ.value.trim();
    // Variable Regex pour valider une adresse email
    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+   console.log("VerifChamp"+verifChamp)
   // Si le champ est vide, on modifie le css pour afficher l'état d'erreur et on modifie la valeur de la variable de controle
   if (champ.value === "" || valeurChamp.length < 2 || (champ.type === "email" && !regexEmail.test(valeurChamp))) {
     champ.parentElement.setAttribute('data-error-visible', 'true');
@@ -62,7 +63,15 @@ function verifierChamp(champ) {
   }
   else {
     champ.parentElement.setAttribute('data-error-visible', 'false');
-    verifChamp = false;
+    if (verifChamp)
+    {
+      verifChamp = true;
+    }
+    else
+    {
+      verifChamp = false;
+    }
+
   }
 }
 
@@ -134,6 +143,7 @@ function verifyCheckbox(checkbox) {
 //Fonction qui lance les différentes fonctions de vérification au click Submit du formulaire
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  verifChamp = false;
   verifierChamp(firstName)
   verifierChamp(lastName)
   verifierChamp(emailFields)
